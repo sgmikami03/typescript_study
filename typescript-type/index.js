@@ -1,10 +1,11 @@
-var hasValue = true;
-var count = 10;
-var float = 3.14;
-var single = 'hello';
-var double = "hello";
-var back = "hello";
-var person = {
+"use strict";
+let hasValue = true;
+let count = 10;
+let float = 3.14;
+let single = 'hello';
+let double = "hello";
+let back = `hello`;
+const person = {
     name: {
         first: "kitazawa",
         last: "yuuho",
@@ -12,8 +13,8 @@ var person = {
     age: 21,
 };
 console.log(person.age);
-var fruits = ["apple", "banana", "grape"];
-var book = ["ビジネス", 1500, false];
+const fruits = ["apple", "banana", "grape"];
+const book = ["ビジネス", 1500, false];
 book[1] = 700;
 //19 enum
 var CoffeeSize;
@@ -23,27 +24,27 @@ var CoffeeSize;
     CoffeeSize["GRANDE"] = "GRANDE";
     CoffeeSize["VENTI"] = "VENTI";
 })(CoffeeSize || (CoffeeSize = {}));
-var coffee = {
+const coffee = {
     hot: true,
     size: CoffeeSize.GRANDE
 };
 coffee.size = CoffeeSize.TALL;
 //20 any
-var anythong = true;
+let anythong = true;
 //21 union
-var unionType = 10;
+let unionType = 10;
 unionType = "string";
-var unionTypes = ["union", 100];
+let unionTypes = ["union", 100];
 //22 leteral
-var apple = "apple";
-var apple2 = "apple";
-var coffeeSizeLeteral = "Short";
-var coffee2 = {
+const apple = "apple";
+const apple2 = "apple";
+let coffeeSizeLeteral = "Short";
+const coffee2 = {
     hot: true,
     size: "Short",
 };
 coffee2.size = "Tall";
-var cloth = {
+const cloth = {
     color: "red",
     size: "small"
 };
@@ -58,24 +59,24 @@ function sayHello() {
 }
 console.log(sayHello());
 //26 ull undefinded
-var tmp;
-var tmpNull;
+let tmp;
+let tmpNull;
 //27 関数型を使って特定の関数を代入する
-var anotherAdd = add;
-var anotherAdd2 = function (num1, num2) {
+const anotherAdd = add;
+const anotherAdd2 = function (num1, num2) {
     return num1 + num2;
 };
 /*const doubleNumber: (number: number) => number = function(number: number) => number{
     return number * 2;
 };*/
 //const doubleNumber = (number: number): number => number * 2;
-var doubleNumber = function (num) { return num * 2; };
+const doubleNumber = num => num * 2;
 //28 callback関数
 function doubleAndHundle(num, cb) {
-    var doubleNumber = cb(num * 2);
+    const doubleNumber = cb(num * 2);
     console.log(doubleNumber);
 }
-doubleAndHundle(21, function (doubleNum) {
+doubleAndHundle(21, doubleNum => {
     return doubleNum;
 });
 //わからないから書いてみる
@@ -92,17 +93,17 @@ function checkArray(array: number[]):number[] {
 }
 console.log(checkArray(array));*/
 /* callbackで書いた時 */
-var array = [15, 3, 20, 8, 5];
+const array = [15, 3, 20, 8, 5];
 function checkArray(array, cb) {
-    var returnArray = [];
-    array.forEach(function (element) {
+    const returnArray = [];
+    array.forEach(element => {
         if (cb(element)) {
             returnArray.push(element);
         }
     });
     return returnArray;
 }
-var arraymod2 = checkArray(array, function (element) {
+const arraymod2 = checkArray(array, function (element) {
     if (element % 2 == 0) {
         return true;
     }
@@ -110,7 +111,7 @@ var arraymod2 = checkArray(array, function (element) {
         return false;
     }
 });
-var arraymod3 = checkArray(array, function (element) {
+const arraymod3 = checkArray(array, function (element) {
     if (element % 3 == 0) {
         return true;
     }
@@ -120,3 +121,15 @@ var arraymod3 = checkArray(array, function (element) {
 });
 console.log(arraymod2);
 console.log(arraymod3);
+//29 unknown
+let unknownInput;
+unknownInput = "hello";
+let text;
+if (typeof unknownInput === "string") {
+    text = unknownInput;
+}
+//20 never
+function error(message) {
+    throw new Error(message);
+}
+console.log(error("this is un error"));
