@@ -1,7 +1,7 @@
 var Person = /** @class */ (function () {
-    function Person(initName, initAge) {
-        this.name = initName;
-        this.age = initAge;
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
     }
     Person.prototype.inclementAge = function () {
         this.age++;
