@@ -56,7 +56,15 @@ var Teacher = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    Teacher.getInstance = function () {
+        if (Teacher.instance)
+            return Teacher.instance;
+        Teacher.instance = new Teacher("taro", 38, "math");
+        return Teacher.instance;
+    };
     return Teacher;
 }(Person));
-var teacher = new Teacher("taro", 38, "math");
-teacher.greeting();
+var teacher = Teacher.getInstance();
+var teacher2 = Teacher.getInstance();
+console.log(teacher);
+console.log(teacher2);
