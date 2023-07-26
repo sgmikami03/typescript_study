@@ -28,6 +28,7 @@ var Person = /** @class */ (function () {
     };
     Person.prototype.greeting = function () {
         console.log("hello my name is ".concat(this.name, " im ").concat(this.age, " years ord"));
+        this.explainJob();
     };
     Person.specis = "homo sapiens";
     return Person;
@@ -39,6 +40,9 @@ var Teacher = /** @class */ (function (_super) {
         _this._subject = _subject;
         return _this;
     }
+    Teacher.prototype.explainJob = function () {
+        console.log("hello im teacher!!");
+    };
     Object.defineProperty(Teacher.prototype, "subject", {
         get: function () {
             return this._subject;
@@ -52,12 +56,7 @@ var Teacher = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
-    Teacher.prototype.greeting = function () {
-        console.log("hello my name is ".concat(this.name, " im ").concat(this.age, " years ord i teach ").concat(this._subject));
-    };
     return Teacher;
 }(Person));
-var teacher = new Teacher("jiro", 20, "math");
+var teacher = new Teacher("taro", 38, "math");
 teacher.greeting();
-console.log(Teacher.specis);
-console.log(Teacher.isAadult(18));
