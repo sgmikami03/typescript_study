@@ -18,12 +18,18 @@ var Person = /** @class */ (function () {
         this.name = name;
         this.age = age;
     }
+    Person.isAadult = function (age) {
+        if (age > 17)
+            return true;
+        return false;
+    };
     Person.prototype.inclementAge = function () {
         this.age++;
     };
     Person.prototype.greeting = function () {
         console.log("hello my name is ".concat(this.name, " im ").concat(this.age, " years ord"));
     };
+    Person.specis = "homo sapiens";
     return Person;
 }());
 var Teacher = /** @class */ (function (_super) {
@@ -38,6 +44,9 @@ var Teacher = /** @class */ (function (_super) {
             return this._subject;
         },
         set: function (vaule) {
+            if (!vaule) {
+                throw new Error("there is no subject.");
+            }
             this._subject = vaule;
         },
         enumerable: false,
@@ -50,6 +59,5 @@ var Teacher = /** @class */ (function (_super) {
 }(Person));
 var teacher = new Teacher("jiro", 20, "math");
 teacher.greeting();
-console.log(teacher.subject);
-teacher.subject = "music";
-console.log(teacher.subject);
+console.log(Teacher.specis);
+console.log(Teacher.isAadult(18));

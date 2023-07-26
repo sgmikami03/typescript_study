@@ -1,4 +1,9 @@
 class Person {
+    static specis = "homo sapiens";
+    static isAadult(age: number) {
+        if (age > 17) return true;
+        return false;
+    }
     constructor(public readonly name: string, protected age: number){
     }
 
@@ -17,6 +22,9 @@ class Teacher extends Person {
     }
 
     set subject(vaule) {
+        if(!vaule) {
+            throw new Error("there is no subject.")
+        }
         this._subject = vaule;
     }
 
@@ -31,6 +39,6 @@ class Teacher extends Person {
 
 const teacher = new Teacher("jiro", 20, "math");
 teacher.greeting();
-console.log(teacher.subject);
-teacher.subject = "music"
-console.log(teacher.subject);
+
+console.log(Teacher.specis);
+console.log(Teacher.isAadult(18));
