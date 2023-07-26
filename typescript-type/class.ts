@@ -12,15 +12,25 @@ class Person {
 }
 
 class Teacher extends Person {
-    constructor(name: string, age: number, public subject: string) {
+    get subject() {
+        return this._subject;
+    }
+
+    set subject(vaule) {
+        this._subject = vaule;
+    }
+
+    constructor(name: string, age: number, private _subject: string) {
         super(name, age);
-        this.subject = subject;
     }
 
     greeting() {
-        console.log(`hello my name is ${this.name} im ${this.age} years ord i teach ${this.subject}`);   
+        console.log(`hello my name is ${this.name} im ${this.age} years ord i teach ${this._subject}`);   
     }
 }
 
 const teacher = new Teacher("jiro", 20, "math");
 teacher.greeting();
+console.log(teacher.subject);
+teacher.subject = "music"
+console.log(teacher.subject);

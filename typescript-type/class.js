@@ -28,16 +28,28 @@ var Person = /** @class */ (function () {
 }());
 var Teacher = /** @class */ (function (_super) {
     __extends(Teacher, _super);
-    function Teacher(name, age, subject) {
+    function Teacher(name, age, _subject) {
         var _this = _super.call(this, name, age) || this;
-        _this.subject = subject;
-        _this.subject = subject;
+        _this._subject = _subject;
         return _this;
     }
+    Object.defineProperty(Teacher.prototype, "subject", {
+        get: function () {
+            return this._subject;
+        },
+        set: function (vaule) {
+            this._subject = vaule;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Teacher.prototype.greeting = function () {
-        console.log("hello my name is ".concat(this.name, " im ").concat(this.age, " years ord i teach ").concat(this.subject));
+        console.log("hello my name is ".concat(this.name, " im ").concat(this.age, " years ord i teach ").concat(this._subject));
     };
     return Teacher;
 }(Person));
 var teacher = new Teacher("jiro", 20, "math");
 teacher.greeting();
+console.log(teacher.subject);
+teacher.subject = "music";
+console.log(teacher.subject);
